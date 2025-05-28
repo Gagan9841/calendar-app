@@ -1,5 +1,5 @@
 <template>
-  <div class="pr-2 w-12">
+  <div class="select-none pr-2 w-12">
     <div
       v-for="hour in 25"
       :key="hour - 1"
@@ -16,13 +16,34 @@
           class="size-2 rounded-full bg-red-500 absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
         ></div>
       </div>
+
       <p class="top-0 -translate-y-1/2">{{ hour === 25 ? 0 : hour - 1 }}:00</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const now = ref(new Date())
+
+let intervalId: number | undefined
+
+onMounted(() => {
+  intervalId = setInterval(() => {
+    now.value = new Date()
+  }, 60000) as unknown as number
+})
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId)
+  }
+})
 </script>
+
+<style scoped>
+.time-table {
+  @apply select-none;
+}
+</style>

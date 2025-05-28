@@ -8,7 +8,7 @@ import {
   DEFAULT_VIEW,
   DEFAULT_DATE,
   DEFAULT_EVENTS,
-} from '@/components/FullCalendar/utils/fullcalendar'
+} from '@/lib/fullcalendar'
 import type { Locale } from 'date-fns'
 
 export interface UseCalendarReturn {

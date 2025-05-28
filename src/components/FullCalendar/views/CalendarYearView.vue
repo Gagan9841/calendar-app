@@ -44,7 +44,7 @@
 import { inject, computed } from 'vue'
 import { format, setMonth, getMonth, isSameDay } from 'date-fns'
 import type { UseCalendarReturn } from '@/composables/useCalendar'
-import { getYearMonths, generateWeekdays } from '@/components/FullCalendar/utils/fullcalendar'
+import { getYearMonths, generateWeekdays } from '@/lib/fullcalendar'
 
 const calendar = inject<UseCalendarReturn>('calendar')!
 

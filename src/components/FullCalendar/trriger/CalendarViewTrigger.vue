@@ -8,7 +8,7 @@
 import { inject, computed } from 'vue'
 import { Button } from '@/components/ui/button'
 import type { UseCalendarReturn } from '@/composables/useCalendar'
-import type { View } from '@/components/FullCalendar/utils/fullcalendar'
+import type { View } from '@/lib/fullcalendar'
 
 interface Props {
   view: View

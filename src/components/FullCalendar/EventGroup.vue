@@ -24,8 +24,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { format, differenceInMinutes, isSameHour } from 'date-fns'
-import type { CalendarEvent } from '@/components/FullCalendar/utils/fullcalendar'
-import { dayEventVariants } from '@/components/FullCalendar/utils/fullcalendar'
+import type { CalendarEvent } from '@/lib/fullcalendar'
+import { dayEventVariants } from '@/lib/fullcalendar'
 
 interface Props {
   events: CalendarEvent[]

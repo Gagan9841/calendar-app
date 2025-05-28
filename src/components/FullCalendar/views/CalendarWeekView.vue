@@ -53,21 +53,45 @@
       </div>
     </div>
   </div>
+  <EventDialog
+    v-model:open="dialogOpen"
+    :date="selectedDate"
+    :event="selectedEvent"
+    @save="handleEventSave"
+  />
 </template>
 
 <script setup lang="ts">
 import { inject, computed } from 'vue'
 import { format, isToday } from 'date-fns'
 import type { UseCalendarReturn } from '@/composables/useCalendar'
-import type { CalendarEvent } from '@/components/FullCalendar/utils/fullcalendar'
-import { getWeekDates, getHeaderDays } from '@/components/FullCalendar/utils/fullcalendar'
+import type { CalendarEvent } from '@/lib/fullcalendar'
+import { getWeekDates, getHeaderDays } from '@/lib/fullcalendar'
+import { useEventDialog } from '@/composables/useEventDialog'
 
 const calendar = inject<UseCalendarReturn>('calendar')!
+const { dialogOpen, selectedDate, selectedEvent, openDialog, closeDialog } = useEventDialog()
 
 const weekDates = computed(() => getWeekDates(calendar.date.value))
 const headerDays = computed(() => getHeaderDays(calendar.date.value))
 
 const handleEventClick = (event: CalendarEvent) => {
-  calendar.onEventClick?.(event)
+  openDialog(event.start, event)
+}
+
+const handleEventSave = (event: Partial<CalendarEvent>) => {
+  if (event.id) {
+    const index = calendar.events.value.findIndex((e) => e.id === event.id)
+    if (index !== -1) {
+      calendar.events.value[index] = { ...calendar.events.value[index], ...event }
+    }
+  } else {
+    const newEvent: CalendarEvent = {
+      id: crypto.randomUUID(),
+      ...event,
+    } as CalendarEvent
+    calendar.events.value.push(newEvent)
+  }
+  closeDialog()
 }
 </script>

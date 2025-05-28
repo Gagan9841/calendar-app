@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { provide, computed } from 'vue'
 import { useCalendar } from '@/composables/useCalendar'
-import { type CalendarProps } from '@/components/FullCalendar/utils/fullcalendar'
+import { type CalendarProps } from '@/lib/fullcalendar'
 
 const props = withDefaults(defineProps<CalendarProps>(), {
   defaultDate: () => new Date(),

@@ -18,7 +18,7 @@
 import { inject, computed } from 'vue'
 import { setHours } from 'date-fns'
 import type { UseCalendarReturn } from '@/composables/useCalendar'
-import type { CalendarEvent } from '@/components/FullCalendar/utils/fullcalendar'
+import type { CalendarEvent } from '@/lib/fullcalendar'
 
 const calendar = inject<UseCalendarReturn>('calendar')!
 

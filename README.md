@@ -1,6 +1,28 @@
-# calendar-app
+# Calendar App
 
-This template should help get you started developing with Vue 3 in Vite.
+A calendar application built with Vue 3 and TypeScript and Tauri. This application provides a comprehensive calendar interface with multiple view options and event management capabilities.
+
+## Features
+
+- **Multiple Calendar Views**
+  - Month view with event previews
+  - Week view with detailed time slots
+  - Day view for focused daily planning
+  - Year view for long-term overview
+
+- **Event Management**
+  - Create, edit, and delete events
+  - Color-coded events for better organization
+  - Event time tracking with start/end times
+  - Event details dialog for comprehensive information
+
+- **User Interface**
+  - Modern, responsive design
+  - Dark/Light theme support
+  - Intuitive navigation between dates and views
+  - Keyboard shortcuts for quick actions
+
+
 
 ## Recommended IDE Setup
 

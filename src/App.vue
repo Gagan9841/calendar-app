@@ -1,23 +1,55 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import FullCalendar from '@/components/FullCalendar/FullCalendar.vue'
+import { Button } from '@/components/ui/button'
+import { Sun, Moon } from 'lucide-vue-next'
+import { useTheme } from '@/composables/useTheme'
+
+const { toggleTheme, isDark } = useTheme()
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <DefaultLayout>
+    <template #header>
+      <div class="container mx-auto px-4 py-4">
+        <NavigationMenu class="flex items-center justify-between">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink class="text-xl font-semibold"> Calendar App </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#" class="text-sm hover:text-primary">
+                Home
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#" class="text-sm hover:text-primary">
+                About
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Button variant="ghost" size="icon" @click="toggleTheme">
+                <Sun v-if="isDark()" class="h-5 w-5" />
+                <Moon v-else class="h-5 w-5" />
+              </Button>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+    </template>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+    <FullCalendar />
 
-  <RouterView />
+    <template #footer>
+      <div class="container mx-auto px-4 py-4 text-center text-sm text-muted-foreground">
+        <p>© {{ new Date().getFullYear() }} Calendar App. All rights reserved.</p>
+        <p class="mt-2">Built with Vue 3 and Tailwind CSS</p>
+      </div>
+    </template>
+  </DefaultLayout>
 </template>
 
 <style scoped>

@@ -17,26 +17,11 @@ export default defineConfig({
     Components({
       dts: true,
       extensions: ['vue'],
-      globs: ['src/components/**/*.{vue}', 'src/components/'],
       deep: true,
       types: [
         {
           from: 'vue-router',
           names: ['RouterLink', 'RouterView'],
-        },
-        {
-          from: 'vue',
-          names: [
-            'defineComponent',
-            'ref',
-            'reactive',
-            'computed',
-            'watch',
-            'onMounted',
-            'onUnmounted',
-            'onBeforeMount',
-            'onBeforeUnmount',
-          ],
         },
       ],
     }),
@@ -54,7 +39,7 @@ export default defineConfig({
   server: {
     port: 1420,
     strictPort: true,
-    host: host || false,
+    host: host ?? false,
     hmr: host
       ? {
           protocol: 'ws',

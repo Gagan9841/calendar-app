@@ -19,10 +19,11 @@ declare module 'vue' {
     CalendarViewTrigger: typeof import('./src/components/FullCalendar/trriger/CalendarViewTrigger.vue')['default']
     CalendarWeekView: typeof import('./src/components/FullCalendar/views/CalendarWeekView.vue')['default']
     CalendarYearView: typeof import('./src/components/FullCalendar/views/CalendarYearView.vue')['default']
+    CalendatNextTrigger: typeof import('./src/components/FullCalendar/trriger/CalendatNextTrigger.vue')['default']
     computed: typeof import('vue')['computed']
     defineComponent: typeof import('vue')['defineComponent']
     EventGroup: typeof import('./src/components/FullCalendar/utils/EventGroup.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    FullCalendar: typeof import('./src/components/FullCalendar/FullCalendar.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
@@ -44,9 +45,7 @@ declare module 'vue' {
     ref: typeof import('vue')['ref']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     TimeTable: typeof import('./src/components/FullCalendar/TimeTable.vue')['default']
     watch: typeof import('vue')['watch']
-    WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }

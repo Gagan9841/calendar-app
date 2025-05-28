@@ -19,6 +19,7 @@
       <div
         v-for="date in monthDates"
         :key="date.toString()"
+        @click="() => dateClicked(date)"
         :class="[
           'hover:bg-muted/50 ring-1 p-2 text-sm cursor-pointer ring-border overflow-auto',
           'flex flex-col items-center justify-start',
@@ -70,16 +71,20 @@ import {
 
 const calendar = inject<UseCalendarReturn>('calendar')!
 
-// Computed properties
+const emit = defineEmits<(e: 'date-clicked', date: Date) => void>()
+
 const monthDates = computed(() => getDaysInMonth(calendar.date.value))
 const weekDays = computed(() => generateWeekdays(calendar.locale.value))
 
-// Methods
 const getEventsForDate = (date: Date): CalendarEvent[] => {
   return filterEventsByDate(calendar.events.value, date)
 }
 
 const handleEventClick = (event: CalendarEvent) => {
   calendar.onEventClick?.(event)
+}
+
+const dateClicked = (date: Date) => {
+  emit('date-clicked', date)
 }
 </script>

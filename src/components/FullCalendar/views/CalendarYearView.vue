@@ -1,6 +1,6 @@
 <template>
-  <div class="calendar-year-view grid grid-cols-4 gap-10 overflow-auto h-full p-4">
-    <div v-for="(days, monthIndex) in months" :key="days[0].toString()" class="month-container">
+  <div class="select-none grid grid-cols-4 gap-10 overflow-auto h-full p-4">
+    <div v-for="(days, monthIndex) in months" :key="days[0].toString()" class="min-h-0">
       <!-- Month Name -->
       <span class="text-xl font-semibold mb-4 block">
         {{ format(setMonth(calendar.date.value, monthIndex), 'MMMM') }}
@@ -56,13 +56,3 @@ const handleDateClick = (date: Date) => {
   calendar.setView('day')
 }
 </script>
-
-<style scoped>
-.calendar-year-view {
-  @apply select-none;
-}
-
-.month-container {
-  @apply min-h-[200px];
-}
-</style>

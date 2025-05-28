@@ -1,11 +1,14 @@
 <template>
-  <div class="full-calendar">
+  <div class="h-full flex flex-col">
     <CalendarHeader />
 
-    <div class="calendar-content h-full">
+    <div class="flex-1 overflow-hidden h-full">
       <CalendarDayView v-if="calendar.view.value === 'day'" />
       <CalendarWeekView v-else-if="calendar.view.value === 'week'" />
-      <CalendarMonthView v-else-if="calendar.view.value === 'month'" />
+      <CalendarMonthView
+        v-else-if="calendar.view.value === 'month'"
+        @date-clicked="calendar.setDate"
+      />
       <CalendarYearView v-else-if="calendar.view.value === 'year'" />
     </div>
   </div>
@@ -39,13 +42,3 @@ defineExpose({
   events: computed(() => calendar.events.value),
 })
 </script>
-
-<style scoped>
-.full-calendar {
-  @apply h-full flex flex-col;
-}
-
-.calendar-content {
-  @apply flex-1 overflow-hidden;
-}
-</style>

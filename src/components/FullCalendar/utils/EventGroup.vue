@@ -1,5 +1,5 @@
 <template>
-  <div class="event-group h-20 border-t last:border-b relative">
+  <div class="select-none h-20 border-t last:border-b relative">
     <div
       v-for="event in hourEvents"
       :key="event.id"
@@ -56,9 +56,3 @@ const handleEventClick = (event: CalendarEvent) => {
   emit('event-click', event)
 }
 </script>
-
-<style scoped>
-.event-group {
-  @apply select-none;
-}
-</style>
